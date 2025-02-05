@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Using base.html in partials folder as template-->
+{% extends 'partials/base.html' %}
+{% block title %}Login{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-5">
+        <div class="col-md-5 offset-md-3">
+            <div class="card my-2">
+                <div class="card-body">
+                    <h4>Login</h4>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}   <!-- Form -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Login">
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <!-- Redirects to Sign Up page if user wants to create account -->
+                        <a class="btn btn-success" href="{% url 'users-sign-up' %}">Create Acccount</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

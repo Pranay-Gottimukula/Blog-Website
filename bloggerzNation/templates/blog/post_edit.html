@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Using base.html in partials folder as template-->
+{% extends 'partials/base.html' %}
+{% block title %}Post Edit Page{% endblock %}
+{% load crispy_forms_tags %}    <!-- Crispy forms for styling forms-->
+
+<!-- Content which needs to be inside base.html -->
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-5">
+        <div class="col col-md-10 offset-md-1">
+            <div class="card my-3">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}   <!-- form -->
+                        <input class="btn btn-primary btn-sm" type="submit" value="Save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

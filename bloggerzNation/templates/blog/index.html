@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Using base.html in partials folder as template-->
+{% extends 'partials/base.html' %}
+{% block title %}Home Page{% endblock %}
+{% load crispy_forms_tags %}    <!-- Crispy forms for styling forms-->
+
+<!-- Content which needs to be inside base.html -->
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-5">
+
+        {% if request.user.is_authenticated %} <!-- Checks and renders below if user is logged in -->
+        <div class="col-md-4">
+            <div class="card my-2">
+                <div class="card-body">
+                    <h3>Make Post</h3>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}    <!-- csrf token for making posts -->
+                        {{ form|crispy }}   <!-- form -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Post">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% else %}  <!-- Executes this code if user is not logged in -->
+        <div class="alert alert-info my-2" style="height: 180px;" >
+            <h3>You are not logged in...</h3>
+            
+            Login to Post blogs
+            <hr>
+            <a href="{% url 'users-login' %}">Login</a> <!-- Redirects to login page -->
+        </div>
+
+        {% endif %}
+
+        <div class="col-md-8">
+            {% for post in posts %}     <!-- Looping over all posts -->
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-thumbnail" src="{{ post.author.profilemodel.image.url }}" alt="image">
+                        </div>
+                        <div class="col-md-8">
+                            <small> {{post.date_created}} </small>
+                            <hr>
+                            <a class="h3" href="{% url 'blog-post-detail' post.id %}"> {{post.title}} </a>
+                            <p class="text-justify my-3"> {{post.content}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}    <!-- Above part occurs in loop -->
+        </div>
+    </div>
+</div>
+{% endblock %}

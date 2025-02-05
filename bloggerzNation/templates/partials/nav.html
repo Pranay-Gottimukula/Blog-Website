@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!-- Bootstrap navbar -->
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary fixed-top">
+    <div class="container">
+
+      <!-- Checks if user is logged in and only executes if user is logged in -->
+      {% if request.user.is_authenticated %}
+
+      <!-- Navbar main icon takes to home page when clicked -->
+      <a class="navbar-brand text-white" href="{% url 'blog-index' %}" style="font-size: 1.5rem;" >Bloggerz Nation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <!-- Redirects to My Posts -->
+              <a class="nav-link text-white" href="{% url 'blog-my-posts' %}" style="font-size: 1.25rem;" >My Posts <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <!-- Redirects to Profile -->
+              <a class="nav-link text-white" href="{% url 'users-profile' %}" style="font-size: 1.25rem;">Profile <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <!-- Redirects to Logout -->
+              <a class="nav-link text-white" href="{% url 'users-logout' %}" style="font-size: 1.25rem;">Logout</a>
+            </li>
+          </ul>
+        
+          {% else %}    <!-- This code executes if user is not logged in -->
+          <a class="navbar-brand text-white h2" href="{% url 'blog-index' %}" style="font-size: 1.5rem;">Bloggerz Nation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{% url 'users-sign-up' %}" style="font-size: 1.25rem;">Sign Up <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'users-login' %}" style="font-size: 1.25rem;">Login</a>
+            </li>
+          </ul>
+
+          {% endif %}   <!-- end of if-->
+
+        </div>  
+    </div>
+</nav>

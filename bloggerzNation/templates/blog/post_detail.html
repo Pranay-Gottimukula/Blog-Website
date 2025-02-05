@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Using base.html in partials folder as template-->
+{% extends 'partials/base.html' %}
+{% block title %}Post Detail Page{% endblock %}
+{% load crispy_forms_tags %}    <!-- Crispy forms for styling forms-->
+
+<!-- Content which needs to be inside base.html -->
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col md-4">
+                            <img class="img-thumbnail" src="{{ post.author.profilemodel.image.url }}" alt="profile-img">
+                        </div>
+                        <div class="col md-8">
+                            <small>{{ post.date_created }}</small>
+
+                            <!-- Python inline code which checks if author of post is logged user-->
+                            {% if post.author == request.user %}
+                            <span><a class="btn btn-danger btn-sm float-right mx-2  " href="{% url 'blog-post-delete' post.id %}">Delete</a></span>
+                            <span><a class="btn btn-primary btn-sm float-right" href="{% url 'blog-post-edit' post.id %}">Edit</a></span>
+                            {% endif %}
+                            <hr>
+                            <h4>{{ post.title}} </h4>
+                            <p>
+                                {{ post.content }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
