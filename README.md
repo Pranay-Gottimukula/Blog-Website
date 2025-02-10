@@ -1,13 +1,22 @@
 # Blog-Website
 This project is part of GDSC club induction process of IIT Indore
 
-Used html, django, bootstrap
+Task-5: Full-Stack (Beginner)
+Blog application supporting user and author roles
+
+I used html, css, django, bootstrap, SQLlite for this project
+
+This website is fully functional blog website
+
+I couldn't implement JWTAuth and OAuth due to time and knowledge constraints as the project itself took a lot of time learning
 
 Versions used are
 Python==3.12.3  ;  Django==4.2  ;  Bootstrap==4.6
 
 An anonymous user can view all posts without logging in but he cannot post
 A logged in user can make posts, he can manage his posts like editing and deleting
+
+CLicking on Bloggerz Nation icon in navbar will redirect user to home page 
 
 Starting Page shows posts of other users even though user is not logged in 
 Index Page when user is not logged in --> ![Loggedout_view_index](https://github.com/user-attachments/assets/b12c3b8e-df17-44f7-a782-b5052bcdc2c9)
