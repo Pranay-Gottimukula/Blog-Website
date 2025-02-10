@@ -5,13 +5,14 @@ Task-5: Full-Stack (Beginner)
 Blog application supporting user and author roles
 
 I used html, css, django, bootstrap, SQLlite for this project
+This project is made in an virtual environment by me
 
 This website is fully functional blog website
 
 I couldn't implement JWTAuth and OAuth due to time and knowledge constraints as the project itself took a lot of time learning
 
 Versions used are
-Python==3.12.3  ;  Django==4.2  ;  Bootstrap==4.6
+Python==3.12.3  ;  Django==4.2  ;  Bootstrap==4.6 ; pillow==11.1.0 ; django-crispy-forms==2.3
 
 An anonymous user can view all posts without logging in but he cannot post
 A logged in user can make posts, he can manage his posts like editing and deleting
